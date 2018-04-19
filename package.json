@@ -1,0 +1,33 @@
+{
+  "name": "ProjectZ",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "node-sass-chokidar": "^1.1.0",
+    "npm-run-all": "^4.1.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-imagemin": "^4.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "imagemin-jpeg-recompress": "^5.1.0",
+    "imagemin-pngquant": "^5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "build-css": "node-sass-chokidar src/scss -o src/scss",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
