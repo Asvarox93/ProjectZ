@@ -27,6 +27,7 @@
     color: black;
     text-transform: uppercase;
     align-self: center;
+    margin-bottom: 0.1em;
 
     span {
       color: red;
@@ -40,21 +41,21 @@
   }
 
   &-rbtn {
-    padding: 10px 30px;
+    padding: 0.3em;
     background-color: red;
     color: #fff;
     border: none;
     font-size: 1.5em;
     width: 20rem;
-    margin-top: 30px;
+    margin-top: 1.2em;
     align-self: center;
 
     &:hover {
       cursor: pointer;
-      border: 2px solid red;
+      border: 0.1em solid red;
       color: red;
       background: #fff;
-      padding: 8px 28px;
+      padding: 0.2em 0.3em;
     }
   }
 }

@@ -41,7 +41,6 @@ class App extends Component {
             />
           </aside>
           <main className="App-right">
-            <h1 className="App-title">To jest prawa strona</h1>
             <Formulage />
           </main>
         </div>
