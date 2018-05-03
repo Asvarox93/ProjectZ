@@ -155,10 +155,9 @@ class Formulage extends Component {
       status = "Pozytywny";
     }
 
-    console.log("status: ", status);
-    console.log("wynik: ", wynik);
     this.props.setFormulageStatus(status);
     this.props.formulageResoult(wynik);
+    this.props.dbSynchronise(wynik);
   };
 
   render() {
