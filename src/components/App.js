@@ -1,16 +1,30 @@
 import React, { Component } from "react";
-import Kreacja from "./Kreacja";
 import Formulage from "./Formulage";
 import Entry from "./Entry";
+import Resoult from "./Resoult";
 
 class App extends Component {
   state = {
-    getFormulage: false
+    getFormulage: false,
+    FormulageResoult: "",
+    formulageStatus: ""
   };
 
   setFormulageState = e => {
     this.setState({
       getFormulage: e
+    });
+  };
+
+  setFormulageResoult = e => {
+    this.setState({
+      FormulageResoult: e
+    });
+  };
+
+  setFormulageStatus = e => {
+    this.setState({
+      formulageStatus: e
     });
   };
 
@@ -30,7 +44,10 @@ class App extends Component {
           </main>
         </div>
       );
-    } else {
+    } else if (
+      this.state.getFormulage === true &&
+      this.state.FormulageResoult.length <= 0
+    ) {
       return (
         <div className="App">
           <aside className="App-left">
@@ -41,7 +58,29 @@ class App extends Component {
             />
           </aside>
           <main className="App-right">
-            <Formulage />
+            <Formulage
+              formulageResoult={this.setFormulageResoult}
+              setFormulageStatus={this.setFormulageStatus}
+            />
+          </main>
+        </div>
+      );
+    } else if (this.state.FormulageResoult.length > 0) {
+      return (
+        <div className="App">
+          <aside className="App-left">
+            <img
+              src={require("../images/home-fullwidth-features.png")}
+              alt="Ładna pani"
+              className="App-left-img"
+            />
+          </aside>
+          <main className="App-right">
+            <Resoult
+              formulageResoult={this.state.FormulageResoult}
+              formulageClear={this.setFormulageResoult}
+              formulageStatus={this.state.formulageStatus}
+            />
           </main>
         </div>
       );

@@ -16,13 +16,150 @@ class Formulage extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(event.target.name, event.target.value);
   };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
-    console.log("wysłano waidomość email");
-  }
+    let wynik = "";
+    let status = "";
+    if (
+      this.state.płytkiObj < 8 &&
+      this.state.neurocyty > 70 &&
+      this.state.limfocyty < 26.4
+    ) {
+      wynik = "Małopłytkowość \n";
+    }
+
+    if (
+      this.state.erytrocyty < 3.8 &&
+      this.state.hemoglobina < 12 &&
+      this.state.hematokryt < 37 &&
+      this.state.limfocyty < 26.4
+    ) {
+      wynik += "Anemia \n";
+    }
+
+    if (
+      this.state.leukocyty < 4 &&
+      this.state.erytrocyty < 3.8 &&
+      this.state.hemoglobina < 12 &&
+      this.state.hematokryt < 37
+    ) {
+      wynik += "Białaczka \n";
+    }
+
+    if (
+      this.state.erytrocyty > 5.2 &&
+      this.state.hemoglobina > 16 &&
+      this.state.mcv > 97 &&
+      this.state.mch > 34 &&
+      this.state.płytkiObj > 11
+    ) {
+      wynik += "Nadkrwistość \n";
+    }
+
+    if (this.state.płytki > 400) {
+      wynik += "Nadpłytkowość \n";
+    }
+
+    if (
+      this.state.hemoglobina < 12 &&
+      this.state.hematokryt < 37 &&
+      this.state.mch < 27
+    ) {
+      wynik += "Niedobór żelaza \n";
+    }
+
+    if (this.state.limfocyty > 49.2) {
+      wynik += "Nadczynność tarczycy \n";
+    }
+
+    if (this.state.limfocyty < 26.4) {
+      wynik += "AIDS \n";
+    }
+
+    if (this.state.leukocyty < 4 && this.state.erytrocyty < 3.8) {
+      wynik += "Aplazja szpiku \n";
+    }
+
+    if (this.state.erytrocyty > 5.2) {
+      wynik += "Brak witaminy B12 \n";
+    }
+
+    if (
+      this.state.erytrocyty > 5.2 &&
+      this.state.hemoglobina > 16 &&
+      this.state.hematokryt > 47
+    ) {
+      wynik += "Anemia hemolityczna \n";
+    }
+
+    if (
+      this.state.erytrocyty > 5.2 &&
+      this.state.hemoglobina > 16 &&
+      this.state.mcv > 97 &&
+      this.state.mch > 34
+    ) {
+      wynik += "Anemia sierpowata \n";
+    }
+
+    if (this.state.leukocyty > 10.5) {
+      wynik += "Zapalenie wyrostka \n";
+    }
+
+    if (this.state.leukocyty > 10.5 && this.state.neurocyty > 70) {
+      wynik += "Zapalenie nerek \n";
+    }
+
+    if (this.state.leukocyty > 10.5 && this.state.neurocyty > 70) {
+      wynik += "Bakteryjne zapalenie płuc \n";
+    }
+
+    if (
+      this.state.leukocyty > 10.5 &&
+      this.state.neurocyty > 70 &&
+      this.state.limfocyty > 49.2
+    ) {
+      wynik += "Nowotwór ";
+    }
+
+    if (this.state.neurocyty > 70) {
+      wynik += "Bakteryjne skażenie skóry ";
+    }
+
+    if (
+      this.state.leukocyty > 4 &&
+      this.state.leukocyty < 10.5 &&
+      this.state.erytrocyty > 3.8 &&
+      this.state.erytrocyty < 5.2 &&
+      this.state.hemoglobina > 12 &&
+      this.state.hemoglobina < 16 &&
+      this.state.hematokryt > 37 &&
+      this.state.hematokryt < 47 &&
+      this.state.mcv > 80 &&
+      this.state.mcv < 97 &&
+      this.state.mch > 27 &&
+      this.state.mch < 34 &&
+      this.state.płytki > 130 &&
+      this.state.płytki < 400 &&
+      this.state.płytkiObj > 8 &&
+      this.state.płytkiObj < 11 &&
+      this.state.neurocyty > 45 &&
+      this.state.neurocyty < 70 &&
+      this.state.limfocyty > 26.4 &&
+      this.state.limfocyty < 49.2
+    ) {
+      wynik = "Brak chorób";
+      status = "Negatywny";
+    } else {
+      status = "Pozytywny";
+    }
+
+    console.log("status: ", status);
+    console.log("wynik: ", wynik);
+    this.props.setFormulageStatus(status);
+    this.props.formulageResoult(wynik);
+  };
 
   render() {
     return (
@@ -35,7 +172,7 @@ class Formulage extends Component {
           <input
             type="range"
             min="1"
-            max="100"
+            max="50"
             step="0.1"
             name="leukocyty"
             value={this.state.leukocyty}
@@ -51,7 +188,7 @@ class Formulage extends Component {
           <input
             type="range"
             min="1"
-            max="100"
+            max="20"
             step="0.1"
             name="erytrocyty"
             value={this.state.erytrocyty}
@@ -67,7 +204,7 @@ class Formulage extends Component {
           <input
             type="range"
             min="1"
-            max="100"
+            max="50"
             step="0.1"
             name="hemoglobina"
             value={this.state.hemoglobina}
@@ -99,8 +236,8 @@ class Formulage extends Component {
           <input
             type="range"
             min="1"
-            max="100"
-            step="0.1"
+            max="200"
+            step="1"
             name="mcv"
             value={this.state.mcv}
             onChange={this.handleChange}
@@ -130,9 +267,9 @@ class Formulage extends Component {
           </label>
           <input
             type="range"
-            min="1"
-            max="100"
-            step="0.1"
+            min="100"
+            max="800"
+            step="1"
             name="płytki"
             value={this.state.płytki}
             onChange={this.handleChange}
@@ -147,7 +284,7 @@ class Formulage extends Component {
           <input
             type="range"
             min="1"
-            max="100"
+            max="20"
             step="0.1"
             name="płytkiObj"
             value={this.state.płytkiObj}
@@ -163,8 +300,8 @@ class Formulage extends Component {
           <input
             type="range"
             min="1"
-            max="100"
-            step="0.1"
+            max="400"
+            step="1"
             name="neurocyty"
             value={this.state.neurocyty}
             onChange={this.handleChange}
@@ -179,7 +316,7 @@ class Formulage extends Component {
           <input
             type="range"
             min="1"
-            max="100"
+            max="300"
             step="0.1"
             name="limfocyty"
             value={this.state.limfocyty}

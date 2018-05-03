@@ -58,4 +58,28 @@
       padding: 0.2em 0.3em;
     }
   }
+
+  &-list {
+    li:last-child {
+      list-style: none;
+    }
+    li:first-child {
+      list-style: disc;
+    }
+    padding: 0;
+  }
+
+  &-result {
+    font-size: 2em;
+    text-transform: uppercase;
+  }
+}
+
+.Pozytywny {
+  font-size: 1.2em;
+  color: red;
+}
+.Negatywny {
+  font-size: 1.2em;
+  color: green;
 }

@@ -82,15 +82,15 @@ $range-label-width: 60px !default;
     position: absolute;
     right: 0;
     padding: 0.3em 1em;
-    background-color: red;
+    background-color: $shade-10;
     color: #fff;
     border: none;
     font-size: 1.5em;
 
     &:hover {
       cursor: pointer;
-      border: 0.1em solid red;
-      color: red;
+      border: 0.1em solid $shade-10;
+      color: $shade-10;
       background: #fff;
       padding: 0.2em 0.9em;
     }
