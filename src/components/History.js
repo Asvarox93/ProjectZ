@@ -2,29 +2,32 @@ import React, { Component } from "react";
 
 class History extends Component {
   state = {
-    wynik: this.props.formulageResoult.split("\n").map(function(item, key) {
-      return <li key={key}>{item}</li>;
-    }),
-    status: this.props.formulageStatus
+    wynik: this.props.formulageHistory
   };
 
   onClick = () => {
-    this.props.formulageClear("");
+    this.props.toHistory(false);
   };
 
   render() {
     return (
       <React.Fragment>
         <h1 className="App-rtitle">
-          Wynik <span>twojego</span> badania
+          Twoja <span>historia</span> badań
         </h1>
-        <h2 className="App-rsubtitle App-result">
-          jest <span className={this.state.status}>{this.state.status}</span>
-        </h2>
-        <ul className="App-rsubtitle App-list">{this.state.wynik}</ul>
+
+        <div className="App-rsubtitle App-history">
+          {Object.keys(this.state.wynik).map((item, i) => (
+            <span className="App-hResoult" key={i}>
+              Badanie nr {i + 1}:{" "}
+              <p>{this.state.wynik[item].FormulageResoult}</p>
+              <br />
+            </span>
+          ))}
+        </div>
 
         <button className="App-rbtn" onClick={this.onClick}>
-          Wyświetl formularz
+          Wróc na początek
         </button>
       </React.Fragment>
     );

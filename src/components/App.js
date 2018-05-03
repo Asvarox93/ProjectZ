@@ -41,13 +41,22 @@ class App extends Component {
   };
 
   dbGetHistory = async () => {
+    if (this.state.uid === null) {
+      return;
+    }
+
     let date = await base.fetch("users/" + this.state.uid, {
       context: this
     });
 
-    console.log(date);
+    this.setState({
+      formulageHistory: date
+    });
   };
   dbSynchronise = async e => {
+    if (this.state.uid === null) {
+      return;
+    }
     let count = await base.fetch("users/" + this.state.uid, {
       context: this
     });
@@ -165,6 +174,8 @@ class App extends Component {
             <Resoult
               formulageResoult={this.state.FormulageResoult}
               formulageClear={this.setFormulageResoult}
+              formulageState={this.setFormulageState}
+              dbGetHistory={this.dbGetHistory}
               formulageStatus={this.state.formulageStatus}
             />
           </main>
@@ -184,7 +195,10 @@ class App extends Component {
             />
           </aside>
           <main className="App-right">
-            <History formulageHistory={this.state.formulageHistory} />
+            <History
+              formulageHistory={this.state.formulageHistory}
+              toHistory={this.setHistoryState}
+            />
           </main>
         </div>
       );

@@ -10,6 +10,8 @@ class Resoult extends Component {
 
   onClick = () => {
     this.props.formulageClear("");
+    this.props.formulageState(false);
+    this.props.dbGetHistory();
   };
 
   render() {
@@ -24,7 +26,7 @@ class Resoult extends Component {
         <ul className="App-rsubtitle App-list">{this.state.wynik}</ul>
 
         <button className="App-rbtn" onClick={this.onClick}>
-          Wyświetl formularz
+          Wróc na początek
         </button>
       </React.Fragment>
     );

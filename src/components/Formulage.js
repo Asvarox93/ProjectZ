@@ -27,7 +27,7 @@ class Formulage extends Component {
       this.state.neurocyty > 70 &&
       this.state.limfocyty < 26.4
     ) {
-      wynik = "Małopłytkowość \n";
+      wynik = "Małopłytkowość\n";
     }
 
     if (
@@ -36,7 +36,7 @@ class Formulage extends Component {
       this.state.hematokryt < 37 &&
       this.state.limfocyty < 26.4
     ) {
-      wynik += "Anemia \n";
+      wynik += "Anemia\n";
     }
 
     if (
@@ -45,7 +45,7 @@ class Formulage extends Component {
       this.state.hemoglobina < 12 &&
       this.state.hematokryt < 37
     ) {
-      wynik += "Białaczka \n";
+      wynik += "Białaczka\n";
     }
 
     if (
@@ -55,11 +55,11 @@ class Formulage extends Component {
       this.state.mch > 34 &&
       this.state.płytkiObj > 11
     ) {
-      wynik += "Nadkrwistość \n";
+      wynik += "Nadkrwistość\n";
     }
 
     if (this.state.płytki > 400) {
-      wynik += "Nadpłytkowość \n";
+      wynik += "Nadpłytkowość\n";
     }
 
     if (
@@ -67,23 +67,23 @@ class Formulage extends Component {
       this.state.hematokryt < 37 &&
       this.state.mch < 27
     ) {
-      wynik += "Niedobór żelaza \n";
+      wynik += "Niedobór żelaza\n";
     }
 
     if (this.state.limfocyty > 49.2) {
-      wynik += "Nadczynność tarczycy \n";
+      wynik += "Nadczynność tarczycy\n";
     }
 
     if (this.state.limfocyty < 26.4) {
-      wynik += "AIDS \n";
+      wynik += "AIDS\n";
     }
 
     if (this.state.leukocyty < 4 && this.state.erytrocyty < 3.8) {
-      wynik += "Aplazja szpiku \n";
+      wynik += "Aplazja szpiku\n";
     }
 
     if (this.state.erytrocyty > 5.2) {
-      wynik += "Brak witaminy B12 \n";
+      wynik += "Brak witaminy B12\n";
     }
 
     if (
@@ -91,7 +91,7 @@ class Formulage extends Component {
       this.state.hemoglobina > 16 &&
       this.state.hematokryt > 47
     ) {
-      wynik += "Anemia hemolityczna \n";
+      wynik += "Anemia hemolityczna\n";
     }
 
     if (
@@ -100,19 +100,19 @@ class Formulage extends Component {
       this.state.mcv > 97 &&
       this.state.mch > 34
     ) {
-      wynik += "Anemia sierpowata \n";
+      wynik += "Anemia sierpowata\n";
     }
 
     if (this.state.leukocyty > 10.5) {
-      wynik += "Zapalenie wyrostka \n";
+      wynik += "Zapalenie wyrostka\n";
     }
 
     if (this.state.leukocyty > 10.5 && this.state.neurocyty > 70) {
-      wynik += "Zapalenie nerek \n";
+      wynik += "Zapalenie nerek\n";
     }
 
     if (this.state.leukocyty > 10.5 && this.state.neurocyty > 70) {
-      wynik += "Bakteryjne zapalenie płuc \n";
+      wynik += "Bakteryjne zapalenie płuc\n";
     }
 
     if (
@@ -124,7 +124,7 @@ class Formulage extends Component {
     }
 
     if (this.state.neurocyty > 70) {
-      wynik += "Bakteryjne skażenie skóry \n";
+      wynik += "Bakteryjne skażenie skóry\n";
     }
 
     if (
@@ -157,7 +157,9 @@ class Formulage extends Component {
 
     this.props.setFormulageStatus(status);
     this.props.formulageResoult(wynik);
-    this.props.dbSynchronise(wynik);
+
+    let dbWynik = wynik.replace(/\n/g, ", ");
+    this.props.dbSynchronise(dbWynik);
   };
 
   render() {
