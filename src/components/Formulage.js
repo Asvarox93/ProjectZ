@@ -120,11 +120,11 @@ class Formulage extends Component {
       this.state.neurocyty > 70 &&
       this.state.limfocyty > 49.2
     ) {
-      wynik += "Nowotwór ";
+      wynik += "Nowotwór \n";
     }
 
     if (this.state.neurocyty > 70) {
-      wynik += "Bakteryjne skażenie skóry ";
+      wynik += "Bakteryjne skażenie skóry \n";
     }
 
     if (
