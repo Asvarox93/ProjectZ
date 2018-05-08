@@ -52,6 +52,26 @@
   .App-result {
     font-size: 2em;
     text-transform: uppercase; }
+  .App-login {
+    font-size: 1em; }
+  .App-facebook {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: #4267b2;
+    color: #ffffff;
+    border: none; }
+    .App-facebook:hover {
+      cursor: pointer;
+      background-color: #fff;
+      border: 2px solid #4267b2;
+      padding: 8px;
+      color: #4267b2; }
+  .App-history {
+    margin-top: 20px;
+    width: 70%; }
+  .App-hResoult p {
+    margin: 0; }
 
 .Pozytywny {
   font-size: 1.2em;
